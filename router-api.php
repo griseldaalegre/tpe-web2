@@ -1,6 +1,7 @@
 <?php
     require_once 'config.php';
-    require_once '/libs/router.php';
+    require_once 'libs/router.php';
+
 
     //resourse= parametro + verbo;
     //Creo el router;
@@ -12,7 +13,7 @@
     //endponit para traer mi listado de categorias
     //                 endpoint     verbo       desde donde llamo   motodo
     //Listo mis categorias
-    $router->addRoute('categorias',     'GET',    'CategoriesController', 'showCategories'   );
+    $router->addRoute('categorias',     'GET',    'ApiCategoriasController', 'getAllCategories'   );
 
     //Listo mis libros por categoria
     $router->addRoute('categorias/:ID',     'GET',    'CategorieController', 'showBooksByCategorieId'   ); //PARAMETRO
