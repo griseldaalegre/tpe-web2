@@ -1,0 +1,13 @@
+<?php require_once './templates/header.phtml'; ?>
+<form action="actualizarCategoria/<?= $id  ?>" method="GET" class="form-categoria">
+
+    <div>
+        <label for="editCategoria/<?= $id  ?>">Editar categoría</label>
+        <input class="form-control form-control-sm" name="newCategorie" type="text" value="<?php echo $categorie->categoria; ?>">
+
+    </div>
+    <button type="submit" class="btn btn-secondary">Actualizar categoría</button>
+</form>
+
+
+<?php require_once './templates/footer.phtml'; ?>
