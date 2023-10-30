@@ -1,6 +1,9 @@
 <?php
     require_once 'config.php';
-    require_once '/libs/router.php';
+    require_once 'libs/router.php';
+    require_once 'apps/controllers/ApiCategoriesController.php';
+
+
 
     //resourse= parametro + verbo;
     //Creo el router;
@@ -12,60 +15,60 @@
     //endponit para traer mi listado de categorias
     //                 endpoint     verbo       desde donde llamo   motodo
     //Listo mis categorias
-    $router->addRoute('categorias',     'GET',    'CategoriesController', 'showCategories'   );
+    $router->addRoute('categories',     'GET',    'ApiCategoriesController', 'getAllCategories'   );
 
     //Listo mis libros por categoria
-    $router->addRoute('categorias/:ID',     'GET',    'CategorieController', 'showBooksByCategorieId'   ); //PARAMETRO
+    //$router->addRoute('categories/:ID',     'GET',    'CategorieController', 'showBooksByCategorieId'   ); //PARAMETRO
 
     //Elimino libro
-    $router->addRoute('categorias/:ID/:ID',     'DELETE',    'CategorieController', 'removeBook'   ); //PARAMETRO
+    //$router->addRoute('categorias/:ID/:ID',     'DELETE',    'CategorieController', 'removeBook'   ); //PARAMETRO
 
     //Agrego libro //post para agregar
-    $router->addRoute('categorias/:ID/:ID', 'POST', 'CategorieController', 'addBook');
+    //$router->addRoute('categorias/:ID/:ID', 'POST', 'CategorieController', 'addBook');
 
     //Actualizo libro //PUTpara actualizar
-    $router->addRoute('categorias/:ID/:ID',     'PUT',    'CategorieController', 'addBook'   ); // parametro
+    //$router->addRoute('categorias/:ID/:ID',     'PUT',    'CategorieController', 'addBook'   ); // parametro
 
     //Edito libro //PUT para editar
-    $router->addRoute('categorias/:ID/:ID',     'PUT',    'CategorieController', 'editBook'   ); //PARAMETRO
+    //$router->addRoute('categorias/:ID/:ID',     'PUT',    'CategorieController', 'editBook'   ); //PARAMETRO
 
     //Elimino categoria
-    $router->addRoute('categorias/:ID/',     'DELETE',    'CategoriesController', 'removeCategorie'   ); //PARAMETRO
+    //$router->addRoute('categorias/:ID/',     'DELETE',    'CategoriesController', 'removeCategorie'   ); //PARAMETRO
 
     //Agrego categoria
-    $router->addRoute('categorias',     'POST',    'CategoriesController', 'addCategorie'   ); 
+    //$router->addRoute('categorias',     'POST',    'CategoriesController', 'addCategorie'   ); 
 
     //Atualizo categoria
-    $router->addRoute('categorias/:ID/',     'PUT',    'CategorieController', 'updateCategorie'   ); //PARAMETRO
+    //$router->addRoute('categorias/:ID/',     'PUT',    'CategorieController', 'updateCategorie'   ); //PARAMETRO
 
     //Edito categoria
-    $router->addRoute('categorias/:ID',     'PUT',    'CategorieController', 'editCategorie'   ); //PARAMETRO
+    //$router->addRoute('categorias/:ID',     'PUT',    'CategorieController', 'editCategorie'   ); //PARAMETRO
 
     // Login
-    $router->addRoute('login', 'GET', 'AuthController', 'showLogin');
+    //$router->addRoute('login', 'GET', 'AuthController', 'showLogin');
     // Ruta GET para mostrar la página de inicio de sesión.
 
     // Signup
-    $router->addRoute('signup', 'GET', 'AuthController', 'showSignup');
+    //$router->addRoute('signup', 'GET', 'AuthController', 'showSignup');
     // Ruta GET para mostrar la página de registro de usuarios.
 
 
     //Registrar usuario
-    $router->addRoute('registro', 'POST', 'AuthController', 'registerUser');
+    //$router->addRoute('registro', 'POST', 'AuthController', 'registerUser');
     //Con el post estoy mandando un usuario a mi db
 
 
     //About
-    $router->addRoute('about', 'GET', 'AuthController', 'showAbout'); //preguntar
+    //$router->addRoute('about', 'GET', 'AuthController', 'showAbout'); //preguntar
 
     //Auth
-    $router->addRoute('auth',     'PUT',    'AuthController', 'auth'   ); 
+    //$router->addRoute('auth',     'PUT',    'AuthController', 'auth'   ); 
 
     //Log out
-    $router->addRoute('logOut', 'GET', 'AuthController', 'logOut');
+    //$router->addRoute('logOut', 'GET', 'AuthController', 'logOut');
 
     //Default
-    $router->addRoute('default',     'PUT',    'ErrorController', 'showError404'   ); 
+    //$router->addRoute('default',     'PUT',    'ErrorController', 'showError404'   ); 
 
 
 
