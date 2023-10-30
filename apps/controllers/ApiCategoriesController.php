@@ -30,5 +30,18 @@ class ApiCategoriesController{
             }
         }
     }
-    
+
+    public function delete($params = [])
+    {
+        $idCategorie = $params[':ID'];
+        if($idCategorie){
+            $this->model->deleteCategoria($idCategorie );
+            // Eliminación exitosa, redirige a la página de categorías
+            $this->view->response(['msg' => "Se elimino correctamente ".$idCategorie], 200);
+        } else {
+
+            $this->view->response(['msg' => "El ID ".$idCategorie.": no existe"], 404);
+        }
+    }
 }
+    

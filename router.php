@@ -33,7 +33,7 @@
     //$router->addRoute('categorias/:ID/:ID',     'PUT',    'CategorieController', 'editBook'   ); //PARAMETRO
 
     //Elimino categoria
-    //$router->addRoute('categorias/:ID/',     'DELETE',    'CategoriesController', 'removeCategorie'   ); //PARAMETRO
+    $router->addRoute('categories/:ID',     'DELETE',    'ApiCategoriesController', 'delete'   ); //PARAMETRO
 
     //Agrego categoria
     //$router->addRoute('categorias',     'POST',    'CategoriesController', 'addCategorie'   ); 
