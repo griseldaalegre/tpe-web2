@@ -9,6 +9,7 @@ Breve descripción de la temática Biblioteca donde se almacenan libros y se reg
 
 # Endpoints
 
-api/categories: Muestro todas las categorias.
-api/categories/ID: Muestro libros por categorias.
-api/categories/ID: Elimino categorias por id. *Consultar*
+api/categories: Muestro todas las categorias - GET
+api/categories/ID: Muestro libros por categorias - GET 
+api/categories/ID: Elimino categorias por id -  DELETE *Consultar*
+api/categoria: Inserto categoria - POST

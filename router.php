@@ -1,7 +1,7 @@
 <?php
     require_once 'config.php';
-    require_once 'libs/router.php';
-    require_once 'apps/controllers/ApiCategoriesController.php';
+    require_once './libs/router.php';
+    require_once 'apps/api/controllers/ApiCategoriesController.php';
 
 
 
@@ -35,11 +35,12 @@
     //Elimino categoria
     $router->addRoute('categories/:ID',     'DELETE',    'ApiCategoriesController', 'delete'   ); //PARAMETRO
 
-    //Agrego categoria
-    //$router->addRoute('categorias',     'POST',    'CategoriesController', 'addCategorie'   ); 
+    // Agregar categoría - POST envio datos a la API para su procesamiento
+    $router->addRoute('categories', 'POST', 'ApiCategoriesController', 'create');
 
-    //Atualizo categoria
-    //$router->addRoute('categorias/:ID/',     'PUT',    'CategorieController', 'updateCategorie'   ); //PARAMETRO
+    // Actualizar categoría - PUT actualizo datos existentes
+    $router->addRoute('categorias/:ID', 'PUT', 'ApiCategoriesController', 'updateCategorie'); 
+
 
     //Edito categoria
     //$router->addRoute('categorias/:ID',     'PUT',    'CategorieController', 'editCategorie'   ); //PARAMETRO
