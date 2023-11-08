@@ -28,6 +28,7 @@ class ApiCategoriesController extends ApiController{
                 $this->view->response($book, 200);
             } else {
                 $this->view->response(['msg' => "El ID ".$params[':ID'].": no existe"], 404);
+                return;
             }
         }
     }
@@ -42,6 +43,7 @@ class ApiCategoriesController extends ApiController{
         } else {
 
             $this->view->response(['msg' => "El ID ".$idCategorie.": no existe"], 404);
+            return;
         }
     }
 
@@ -59,7 +61,28 @@ class ApiCategoriesController extends ApiController{
             $this->view->response(['msg' => 'Categoría insertada con éxito'], 201);
 
         }
+    }
 
+    public function updateCategoria($params = [])
+    {
+        $id= $params[':ID'];
+        $categorie = $this->model->getCategorieById($id);
+
+        if(!empty($id)){
+            if($categorie){
+                $body = $this->getData();
+                $newCategoria= $body->categorie;
+                $this->model->modifyCategorie($newCategoria, $id);
+                $this->view->response(['msg' => 'Categoría editada con éxito'], 201);
+            } else {
+                $this->view->response(['msg' => "El ID ".$categorie.": no existe"], 404);
+                return;
+            }
+        } else {
+            $this->view->response(['msg' => "Campo vacio"], 400);
+            return;
+        }
+  
     }
 }
     

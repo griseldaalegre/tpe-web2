@@ -39,7 +39,7 @@
     $router->addRoute('categories', 'POST', 'ApiCategoriesController', 'create');
 
     // Actualizar categoría - PUT actualizo datos existentes
-    $router->addRoute('categorias/:ID', 'PUT', 'ApiCategoriesController', 'updateCategorie'); 
+    $router->addRoute('categories/:ID', 'PUT', 'ApiCategoriesController', 'updateCategoria'); 
 
 
     //Edito categoria
