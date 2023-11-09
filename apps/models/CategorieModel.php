@@ -22,6 +22,7 @@ class CategoriesModel extends Model
     {
         $query = $this->db->prepare('DELETE FROM categorias WHERE id_categoria = ?');
         $query->execute([$idCategorie]);
+        var_dump('entro al model');
     }
 
     function insertCategorie($categorie)
@@ -65,6 +66,17 @@ class CategorieModel extends Model
 
         return $categorie2;
     }
+
+    function getBookByCategorie($idBook) {
+        $query = $this->db->prepare('SELECT * FROM libros WHERE id_libro = ?');
+        $query->execute([$idBook]);
+
+        // $task es una tarea sola
+        $book = $query->fetch(PDO::FETCH_OBJ);
+
+        return $book;
+    }
+
 
     function deleteBook($idBook)
     {

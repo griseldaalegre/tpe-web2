@@ -5,20 +5,23 @@ require_once './apps/models/CategorieModel.php';
 
 
 
-class ApiCategoriesController extends ApiController{
-    
-    private $model;
+class ApiCategoriesController extends ApiController
+{
+
+    private $model1;
+    private $model2;
 
     function __construct()
     {
         parent::__construct(); // Llamamos al constructor del padre
-        $this->model = new CategoriesModel();
+        $this->model1 = new CategoriesModel();
+        $this->model2 = new CategorieModel();
     }
-    
+
     public function get($params = [])
     {
         if (empty($params)) {
-            $categories = $this->model->getCategories();
+            $categories = $this->model1->getCategories();
             $this->view->response($categories, 200); // Le paso el JSON y el status
         } else {
             // Cambio CategoriesModel a CategorieModel (peguntar si esta bien instanciarla  asi)
@@ -27,25 +30,50 @@ class ApiCategoriesController extends ApiController{
             if (!empty($book)) {
                 $this->view->response($book, 200);
             } else {
-                $this->view->response(['msg' => "El ID ".$params[':ID'].": no existe"], 404);
+                $this->view->response(['msg' => "El ID " . $params[':ID'] . ": no existe"], 404);
                 return;
             }
         }
     }
 
-    public function delete($params = [])
+    public function deleteItem($params = [])
     {
-        $idCategorie = $params[':ID'];
-        if($idCategorie){
-            $this->model->deleteCategoria($idCategorie );
-            // Eliminación exitosa, redirige a la página de categorías
-            $this->view->response(['msg' => "Se elimino correctamente ".$idCategorie], 200);
-        } else {
+        // Verifica si se proporciona el parámetro ":ID" en la URL
+        if (isset($params[':ID'])) {
+            $idCategorie= $params[':ID'];
+            var_dump('chequea');
 
-            $this->view->response(['msg' => "El ID ".$idCategorie.": no existe"], 404);
-            return;
+            // Determina si es una solicitud para eliminar una categoría o un libro
+            if (isset ($params[':ID2'])) {
+                var_dump('entre al if');
+                // Es una solicitud para eliminar un libro en una categoría
+                $idBook = $params[':ID2'];
+                $book = $this->model2->getBookByCategorie($idBook);
+
+                if ($book) {
+                    $this->model2->deleteBook($idBook);
+                    $this->view->response('El libro con el id= ' . $idBook . ' ha sido borrado.', 200);
+                } else {
+                    $this->view->response('El libro con id= ' . $idBook . ' no existe.', 404);
+                }
+            } else {
+                var_dump('entre al else');
+                $categorie = $this->model1->getCategorieById($idCategorie);
+                // Es una solicitud para eliminar una categoría
+                if($categorie){
+                $this->model1->deleteCategoria($idCategorie);
+                // Eliminación exitosa, redirige a la página de categorías
+                $this->view->response(['msg' => "Se eliminó correctamente la categoría con ID " . $idCategorie], 200);
+                }else {
+                // No se proporcionó un parámetro válido en la URL
+                $this->view->response(['msg' => "Parámetro no válido en la URL"], 400);
+                }
+            }
+        }else{
+            $this->view->response(['msg' => "Falta categoria/libro a eliminar"], 400);
         }
     }
+
 
     public function create($params = [])
     {
@@ -57,32 +85,29 @@ class ApiCategoriesController extends ApiController{
         if (empty($categorie)) {
             $this->view->response(['msg' => "Campo incompleto"], 400);
         } else {
-            $id = $this->model->insertCategorie($categorie);
+            $id = $this->model1->insertCategorie($categorie);
             $this->view->response(['msg' => 'Categoría insertada con éxito'], 201);
-
         }
     }
 
     public function updateCategoria($params = [])
     {
-        $id= $params[':ID'];
-        $categorie = $this->model->getCategorieById($id);
+        $id = $params[':ID'];
+        $categorie = $this->model1->getCategorieById($id);
 
-        if(!empty($id)){
-            if($categorie){
+        if (!empty($id)) {
+            if ($categorie) {
                 $body = $this->getData();
-                $newCategoria= $body->categorie;
-                $this->model->modifyCategorie($newCategoria, $id);
+                $newCategoria = $body->categorie;
+                $this->model1->modifyCategorie($newCategoria, $id);
                 $this->view->response(['msg' => 'Categoría editada con éxito'], 201);
             } else {
-                $this->view->response(['msg' => "El ID ".$categorie.": no existe"], 404);
+                $this->view->response(['msg' => "El ID " . $categorie . ": no existe"], 404);
                 return;
             }
         } else {
             $this->view->response(['msg' => "Campo vacio"], 400);
             return;
         }
-  
     }
 }
-    

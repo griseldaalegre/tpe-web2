@@ -21,10 +21,10 @@
     $router->addRoute('categories/:ID',     'GET',    'ApiCategoriesController', 'get'   ); //PARAMETRO
 
     //Elimino libro
-    //$router->addRoute('categorias/:ID/:ID',     'DELETE',    'CategorieController', 'removeBook'   ); //PARAMETRO
+    //$router->addRoute('categories/:ID/:ID',   'DELETE',    'ApiCategorieController', 'deleteBook'   ); //PARAMETRO
 
     //Agrego libro //post para agregar
-    //$router->addRoute('categorias/:ID/:ID', 'POST', 'CategorieController', 'addBook');
+    //$router->addRoute('categorias/:ID/:ID', 'POST', 'ApiCategorieController', 'addBook');
 
     //Actualizo libro //PUTpara actualizar
     //$router->addRoute('categorias/:ID/:ID',     'PUT',    'CategorieController', 'addBook'   ); // parametro
@@ -33,7 +33,8 @@
     //$router->addRoute('categorias/:ID/:ID',     'PUT',    'CategorieController', 'editBook'   ); //PARAMETRO
 
     //Elimino categoria
-    $router->addRoute('categories/:ID',     'DELETE',    'ApiCategoriesController', 'delete'   ); //PARAMETRO
+    $router->addRoute('categories/:ID', 'DELETE', 'ApiCategoriesController', 'deleteItem');
+    $router->addRoute('categories/:ID/:ID2', 'DELETE', 'ApiCategoriesController', 'deleteItem');
 
     // Agregar categoría - POST envio datos a la API para su procesamiento
     $router->addRoute('categories', 'POST', 'ApiCategoriesController', 'create');
