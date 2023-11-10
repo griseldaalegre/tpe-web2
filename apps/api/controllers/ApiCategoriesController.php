@@ -22,13 +22,13 @@ class ApiCategoriesController extends ApiController
     {
         if (empty($params)) {
             $categories = $this->model1->getCategories();
-            $this->view->response($categories, 200); // Le paso el JSON y el status
+            $this->view->response(['msg' => 'Datos de las categorias obtenidos con éxito', 'categories' => $categories], 200);// Le paso el JSON y el status
         } else {
             // Cambio CategoriesModel a CategorieModel (peguntar si esta bien instanciarla  asi)
             $booksModel = new CategorieModel();
             $book = $booksModel->getBooksByCategorie($params[':ID']);
             if (!empty($book)) {
-                $this->view->response($book, 200);
+                $this->view->response(['msg' => 'Datos del los libros por categoria obtenidos con éxito', 'book' => $book], 200);
             } else {
                 $this->view->response(['msg' => "El ID " . $params[':ID'] . ": no existe"], 404);
                 return;
