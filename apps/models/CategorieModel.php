@@ -48,6 +48,15 @@ class CategoriesModel extends Model
         $query = $this->db->prepare('UPDATE categorias SET categoria = ? WHERE id_categoria = ?');
         $query->execute([$categorie, $id]);
     }
+    public function categoriaExiste($idCategorie) {
+        $query = $this->db->prepare('SELECT COUNT(*) as count FROM categorias WHERE id_categoria = ?');
+        $query->execute([$idCategorie]);
+
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+
+        // Si el resultado es mayor a cero, significa que la categoría existe
+        return $result['count'] > 0;
+    }
 }
 
 
