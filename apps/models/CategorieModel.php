@@ -108,5 +108,15 @@ class CategorieModel extends Model
 
         $query = $this->db->prepare('UPDATE libros SET titulo_libro = ?, autor_libro = ?, anio = ? WHERE id_libro = ?');
         $query->execute([$newTitle, $newAuthor, $newYear, $idBook]);
+        return $idBook;
     }
+    public function libroExiste($id_libro) {
+        $query = $this->db->prepare('SELECT * FROM libros WHERE id_libro = ?');
+        $query->execute([$id_libro]);
+    
+        // Devolver el resultado de la consulta
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    
 }

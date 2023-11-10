@@ -15,29 +15,28 @@
     //endponit para traer mi listado de categorias
 
     //                 endpoint              verbo       desde donde llamo       motodo
-    //Listo mis categorias
+    //muestro mis categorias
     $router->addRoute('categories',         'GET',    'ApiCategoriesController', 'get'   );
 
-    //Listo mis libros por categoria
+    //muestro mis libros por categoria
     $router->addRoute('categories/:ID',     'GET',    'ApiCategoriesController', 'get'   );
 
-    //Agrego libro //post para agregar
-    $router->addRoute('categorias', 'POST', 'ApiCategorieController', 'createBook');
-
-    //Actualizo libro //PUTpara actualizar
-    //$router->addRoute('categorias/:ID/:ID',     'PUT',    'CategorieController', 'addBook'   ); // parametro
-
+    //muestro mis libros por id
+    $router->addRoute('categories/:ID/:ID2', 'GET', 'ApiCategoriesController', 'getById');
+    
     //Elimino categoria y libro
     $router->addRoute('categories/:ID', 'DELETE', 'ApiCategoriesController', 'deleteItem');
     $router->addRoute('categories/:ID/:ID2', 'DELETE', 'ApiCategoriesController', 'deleteItem');
-
-    // Agregar categoría - POST envio datos a la API para su procesamiento
-    //$router->addRoute('categories', 'POST', 'ApiCategoriesController', 'create');
+    
+    // Agregar categoría - agregar libro
     $router->addRoute('categories/create', 'POST', 'ApiCategoriesController', 'createItem');
     $router->addRoute('categories/:ID/books/create', 'POST', 'ApiCategoriesController', 'createItem');
-
-    // Actualizar categoría - PUT actualizo datos existentes
-    $router->addRoute('categories/:ID', 'PUT', 'ApiCategoriesController', 'updateCategoria'); 
+    
+    // Actualizar categoría - Actualizar libro
+    $router->addRoute('categories/:ID', 'PUT', 'ApiCategoriesController', 'updateItem');
+    $router->addRoute('categories/:ID/:ID2', 'PUT', 'ApiCategoriesController', 'updateItem');
+    
+    
 
     // Login
     //$router->addRoute('login', 'GET', 'AuthController', 'showLogin');
