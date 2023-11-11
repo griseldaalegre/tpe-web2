@@ -26,7 +26,8 @@ URL: /api/categories
 Descripción: Este endpoint devuelve todas las categorías de libros disponibles en la biblioteca.
 Ejemplo de uso: GET /api/categories
 
-Respuesta positiva: {
+Respuesta positiva: 
+                    {
                         "msg": "Datos de las categorias obtenidos con éxito",
                         "categories": [
                             {
@@ -34,6 +35,7 @@ Respuesta positiva: {
                                 "categoria": "carlota"
                             } ...]
                     }
+
                     Status 200.
 
 OBTENER libros por categoría.
@@ -42,7 +44,8 @@ URL: /api/categories/:ID
 Descripción: Devuelve la lista de libros que pertenecen a una categoría específica, donde {ID} es el ID de la categoría.
 Ejemplo de uso: GET /api/categories/:ID
 
-Respuesta positiva:{
+Respuesta positiva:
+                    {
                         "msg": "Datos del los libros por categoria obtenidos con éxito",
                         "book": [
                             {
@@ -53,11 +56,14 @@ Respuesta positiva:{
                                 "anio": 1968
                             } ...]
                     }
+
                     Status 200.        
 
-Respuesta Negativa:{
+Respuesta Negativa:
+                    {
                         "msg": "El ID (:ID): no existe"
                     }
+
                     Status 404.
 
 ELIMINAR una categoría por ID.
@@ -66,14 +72,18 @@ URL: /api/categories/:ID
 Descripción: Elimina una categoría específica según su ID.
 Ejemplo de uso: DELETE /api/categories/:ID
 
-Respuesta positiva: {
+Respuesta positiva: 
+                    {
                         "msg": "Se elimino correctamente (:ID)"
                     }
+
                     Status 200.
 
-Respuesta negativa: {
+Respuesta negativa: 
+                    {
                         "msg": "La categoría (:ID) especificada no existe"
                     }
+
                     Status 404.
 
 
@@ -85,19 +95,24 @@ Descripción: Permite agregar una nueva categoría a la biblioteca.
 Ejemplo de uso: POST /api/categories
 
  JSON para poder 
-agregar categoria:  {
+agregar categoria:  
+                    {
                         "categorie": "Nombre_Categoria" (VARCHAR)
-                    }.
+                    }
 
-Respuesta positiva: {
+Respuesta positiva: 
+                    {
                         "msg": "La categoría fue agregada con éxito.",
                         "Categoria": "Nombre_Categoria" 
                     }
+
                     Status 201.
 
-respuesta negativa: {
+respuesta negativa: 
+                    {
                         "msg": "Campo incompleto"
                     } 
+
                     Status 400.
 
 
@@ -108,30 +123,37 @@ Descripción: Permite modificar una categoría existente según su ID.
 Ejemplo de uso: PUT /api/categories/:ID(id_categoria)
 
 JSON para poder 
-editar categoria:  {
+editar categoria:  
+                    {
                         "categorie": "Nombre_Categoria" (VARCHAR)
-                    }.
+                    }
 
-Respuesta positiva: {
+Respuesta positiva: 
+                    {
                         "msg": "La categoría fue modificada con éxito.",
                         "Categoria": {
                             "id_categoria": 1,
                             "categoria": "carlota"
                             }
-                    }.
+                    }
+
                     Status 200.
 
-Respuestas negativas: {
+Respuestas negativas: 
+                    {
                         "msg": "La categoría (:ID) especificada no existe"
                     }
+
                     Status 404.
 
                     {
                         "msg": "El ID (:ID): no existe"
                     }
+
                     Status 404.
 
                     {
                         "msg": "Campo vacio"
                     }
+
                     Status 400.
