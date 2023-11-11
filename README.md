@@ -139,7 +139,7 @@ Respuesta positiva:
 
                     Status 200.
 
-Respuestas negativas: 
+Respuestas negativas:. 
                     {
                         "msg": "La categoría (:ID) especificada no existe"
                     }
