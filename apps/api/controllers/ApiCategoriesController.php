@@ -15,6 +15,7 @@ class ApiCategoriesController extends ApiController{
         parent::__construct(); // Llamamos al constructor del padre
         $this->model = new CategoriesModel();
     }
+
     
     public function getCategories($params = [])
     {
@@ -32,6 +33,43 @@ class ApiCategoriesController extends ApiController{
                 return;
             }
         }
+    }
+    
+    public function getOrderedCategories($params = []) {
+        // Verifica que el valor de $order sea válido (ASC o DESC)
+        $order = $params[':order'];
+
+        if ($order !== 'ASC' && $order !== 'DESC') {
+            $this->view->response(['msg' => 'Error en el parámetro de orden'], 400);
+            return;
+        }
+
+        // Obtén las categorías ordenadas
+        $categories = $this->model->getCategoriesOrdered($order);
+
+        if ($categories !== false) {
+            $this->view->response(['msg' => 'Datos de las categorías obtenidos ordenadas con éxito', 'Categorias' => $categories], 200);
+        } else {
+            $this->view->response(['msg' => 'Error al obtener las categorías'], 400);
+        }
+    }
+    public function getFilterCategories($params = [])
+    {
+        $filtro = $params[':letter'];
+
+        if (!$filtro) {
+            $this->view->response(['msg' => 'Filtrado vacio.'], 400);
+            return;
+        }
+        $categoriasFiltrada = $this->model->getCategoriesFilter($filtro);
+
+        if (!empty($categoriasFiltrada)) {
+            $this->view->response(['msg' => 'Datos de las categorías obtenidos ordenadas con éxito', 'Categorias' => $categoriasFiltrada], 200);
+        } else {
+            $this->view->response(['msg' => 'No se encontro resultado.'], 404);
+        }
+
+
     }
 
     public function delete($params = [])

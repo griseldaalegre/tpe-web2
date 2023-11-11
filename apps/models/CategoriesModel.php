@@ -5,7 +5,22 @@ require_once './apps/models/model.php';
 
 class CategoriesModel extends Model
 {
-
+    
+    public function getCategoriesOrdered($order) {
+        $query = $this->db->prepare("SELECT * FROM categorias ORDER BY categoria $order");
+        $query->execute();
+        
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+    
+    public function getCategoriesFilter($filtro){
+        $query = $this->db->prepare("SELECT * FROM categorias WHERE categoria LIKE '$filtro%'");
+        $query->execute();
+        
+        return $query->fetchAll(PDO::FETCH_OBJ);
+        
+    }
+    
     function getCategories()
     {
 
