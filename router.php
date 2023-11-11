@@ -20,18 +20,6 @@
     //Listo mis libros por categoria
     $router->addRoute('categories/:ID',     'GET',    'ApiCategoriesController', 'get'   ); //PARAMETRO
 
-    //Elimino libro
-    //$router->addRoute('categorias/:ID/:ID',     'DELETE',    'CategorieController', 'removeBook'   ); //PARAMETRO
-
-    //Agrego libro //post para agregar
-    //$router->addRoute('categorias/:ID/:ID', 'POST', 'CategorieController', 'addBook');
-
-    //Actualizo libro //PUTpara actualizar
-    //$router->addRoute('categorias/:ID/:ID',     'PUT',    'CategorieController', 'addBook'   ); // parametro
-
-    //Edito libro //PUT para editar
-    //$router->addRoute('categorias/:ID/:ID',     'PUT',    'CategorieController', 'editBook'   ); //PARAMETRO
-
     //Elimino categoria
     $router->addRoute('categories/:ID',     'DELETE',    'ApiCategoriesController', 'delete'   ); //PARAMETRO
 
@@ -40,38 +28,6 @@
 
     // Actualizar categoría - PUT actualizo datos existentes
     $router->addRoute('categories/:ID', 'PUT', 'ApiCategoriesController', 'updateCategoria'); 
-
-
-    //Edito categoria
-    //$router->addRoute('categorias/:ID',     'PUT',    'CategorieController', 'editCategorie'   ); //PARAMETRO
-
-    // Login
-    //$router->addRoute('login', 'GET', 'AuthController', 'showLogin');
-    // Ruta GET para mostrar la página de inicio de sesión.
-
-    // Signup
-    //$router->addRoute('signup', 'GET', 'AuthController', 'showSignup');
-    // Ruta GET para mostrar la página de registro de usuarios.
-
-
-    //Registrar usuario
-    //$router->addRoute('registro', 'POST', 'AuthController', 'registerUser');
-    //Con el post estoy mandando un usuario a mi db
-
-
-    //About
-    //$router->addRoute('about', 'GET', 'AuthController', 'showAbout'); //preguntar
-
-    //Auth
-    //$router->addRoute('auth',     'PUT',    'AuthController', 'auth'   ); 
-
-    //Log out
-    //$router->addRoute('logOut', 'GET', 'AuthController', 'logOut');
-
-    //Default
-    //$router->addRoute('default',     'PUT',    'ErrorController', 'showError404'   ); 
-
-
 
     //Una vez q defini todas mis entradas en mi tabla de ruteo: route->paso mi recurso(resource, seria como el action) y obtengo el metodo con el q se esta llamando
             //recurso/action    +    metodo con el q llamo/get/post/delete
