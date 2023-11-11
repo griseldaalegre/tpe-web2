@@ -1,8 +1,8 @@
 <?php
 require_once './apps/api/controllers/ApiController.php';
 require_once './apps/models/model.php';
-require_once './apps/models/BooksModel.php';
 require_once './apps/models/CategoriesModel.php';
+require_once './apps/models/BooksModel.php';
 
 
 
@@ -39,17 +39,13 @@ class ApiCategoriesController extends ApiController{
         $idCategorie = $params[':ID'];
         
         if (!$this->model->categoriaExiste($idCategorie)) {
-            $this->view->response(['msg' => 'La categoría ' . $idCategorie .  ' especificada no existe'], 401);
+            $this->view->response(['msg' => 'La categoría ' . $idCategorie .  ' especificada no existe'], 404);
             return;
         }
         if($idCategorie){
             $this->model->deleteCategoria($idCategorie );
             // Eliminación exitosa, redirige a la página de categorías
             $this->view->response(['msg' => "Se elimino correctamente ".$idCategorie], 200);
-        } else {
-
-            $this->view->response(['msg' => "El ID ".$idCategorie.": no existe"], 401);
-            return;
         }
     }
 
@@ -61,7 +57,7 @@ class ApiCategoriesController extends ApiController{
         $categorie = $body->categorie;
         //despues hacer control
         if (empty($categorie)) {
-            $this->view->response(['msg' => 'Campo incompleto'], 401);
+            $this->view->response(['msg' => 'Campo incompleto'], 400);
         } else {
             $this->model->insertCategorie($categorie);
             $this->view->response(['msg' => 'La categoría fue agregada con éxito.', 'Categoria' => $categorie], 201);
@@ -85,7 +81,7 @@ class ApiCategoriesController extends ApiController{
                 $this->model->modifyCategorie($newCategoria, $id);
                 $this->view->response(['msg' => 'La categoría fue modificada con éxito.', 'Categoria' => $categorie], 200);
             } else {
-                $this->view->response(['msg' => "El ID ".$id.": no existe"], 401);
+                $this->view->response(['msg' => "El ID ".$id.": no existe"], 404);
                 return;
             }
         } else {

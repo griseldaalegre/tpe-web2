@@ -1,8 +1,8 @@
 <?php
     require_once 'config.php';
     require_once './libs/router.php';
-    require_once 'apps/api/controllers/ApiCategoriesController.php';
-
+    require_once './apps/api/controllers/ApiCategoriesController.php';
+   
 
 
     //resourse= parametro + verbo;
@@ -18,10 +18,10 @@
     $router->addRoute('categories',         'GET',    'ApiCategoriesController', 'getCategories'   );
 
     //Muestro mis libros por categoria
-    $router->addRoute('categories/:ID',     'GET',    'ApiCategoriesController', 'getCategories'   ); //PARAMETRO
+    $router->addRoute('categories/:ID',     'GET',    'ApiCategoriesController', 'getCategories'   ); 
 
     //Elimino categoria
-    $router->addRoute('categories/:ID',     'DELETE',    'ApiCategoriesController', 'delete'   ); //PARAMETRO
+    $router->addRoute('categories/:ID',     'DELETE',    'ApiCategoriesController', 'delete'   ); 
 
     // Agregar categoría - POST envio datos a la API para su procesamiento
     $router->addRoute('categories', 'POST', 'ApiCategoriesController', 'create');
