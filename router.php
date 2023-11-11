@@ -14,11 +14,11 @@
     //Endpoints
     //endponit para traer mi listado de categorias
     //                 endpoint     verbo       desde donde llamo   motodo
-    //Listo mis categorias
-    $router->addRoute('categories',         'GET',    'ApiCategoriesController', 'get'   );
+    //Muestro mis categorias
+    $router->addRoute('categories',         'GET',    'ApiCategoriesController', 'getCategories'   );
 
-    //Listo mis libros por categoria
-    $router->addRoute('categories/:ID',     'GET',    'ApiCategoriesController', 'get'   ); //PARAMETRO
+    //Muestro mis libros por categoria
+    $router->addRoute('categories/:ID',     'GET',    'ApiCategoriesController', 'getCategories'   ); //PARAMETRO
 
     //Elimino categoria
     $router->addRoute('categories/:ID',     'DELETE',    'ApiCategoriesController', 'delete'   ); //PARAMETRO
