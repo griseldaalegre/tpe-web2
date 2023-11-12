@@ -189,7 +189,7 @@ Respuestas negativas:
 
                     Status 400.
 
-ORDENA las categorías.
+ORDENA las categorías por id.
 
 Método: GET
 
