@@ -44,9 +44,13 @@ Respuesta positiva:
                     Status 200.
 
 OBTENER libros por categoría.
+
 Método: GET
+
 URL: /api/categories/:ID
+
 Descripción: Devuelve la lista de libros que pertenecen a una categoría específica, donde {ID} es el ID de la categoría.
+
 Ejemplo de uso: GET /api/categories/:ID
 
 Respuesta positiva:
@@ -74,9 +78,13 @@ Respuesta Negativa:
                     Status 404.
 
 ELIMINAR una categoría por ID.
+
 Método: DELETE //ver de largar advertencia cuando la categoria no esta vacia
+
 URL: /api/categories/:ID
+
 Descripción: Elimina una categoría específica según su ID.
+
 Ejemplo de uso: DELETE /api/categories/:ID
 
 Respuesta positiva: 
@@ -98,9 +106,13 @@ Respuesta negativa:
 
 
 INSERTAR una nueva categoría.
+
 Método: POST
+
 URL: /api/categories
+
 Descripción: Permite agregar una nueva categoría a la biblioteca.
+
 Ejemplo de uso: POST /api/categories
 
  JSON para poder 
@@ -129,9 +141,13 @@ respuesta negativa:
 
 
 EDITAR una categoría por ID.
+
 Método: PUT
+
 URL: /api/categories/:ID
+
 Descripción: Permite modificar una categoría existente según su ID.
+
 Ejemplo de uso: PUT /api/categories/:ID(id_categoria)
 
 JSON para poder 
@@ -174,9 +190,13 @@ Respuestas negativas:
                     Status 400.
 
 ORDENA las categorías.
+
 Método: GET
+
 URL: /api/categoriesOrder/:order
+
 Descripción: Permite ordenar las categorías existente de manera asendente o desendente.
+
 Ejemplo de uso: GET /api/categoriesOrder/order(ASC/DESC)
 
 Respuesta positiva: 
@@ -200,9 +220,13 @@ Respuestas negativas:
                     Status 404.
                     
 ORDENA las categorías.
+
 Método: GET
+
 URL: /api/categorieOrderById/:ID/:order
+
 Descripción: Permite ordenar los libros de manera asendente o desendente segun un id de categorías especifica.
+
 Ejemplo de uso: GET /api/categorieOrderById/1(id_categoria)/order(ASC/DESC)
 
 Respuesta positiva:
@@ -236,9 +260,13 @@ Respuestas negativas:
                     Status 400.
 
 FLITRADO de las categorías.
+
 Método: GET
+
 URL: /api/categoriesFilter/:letter
+
 Descripción: Permite filtrar todas las categorias que empiecen segun una letra especificada en la URL.
+
 Ejemplo de uso: GET /tpe-web2/api/categoriesFilter/letter(letra por la cual se quiere filtrar)
                     
 Respuesta positiva:
@@ -263,9 +291,13 @@ Respuestas negativas:
                     Status 404.
 
 PAGINADO de las categorías.
+
 Método: GET
+
 URL: /api/categorie/:page
+
 Descripción: Permite paginar por 3 categorias por pagina.
+
 Ejemplo de uso: GET /tpe-web2/api/categorie/page(Numero de la pagina, 1-2-3-...)
                     
 Respuesta positiva:
