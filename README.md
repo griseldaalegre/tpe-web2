@@ -46,6 +46,7 @@ Descripción: Devuelve la lista de libros que pertenecen a una categoría espec�
 Ejemplo de uso: GET /api/categories/:ID
 
 Respuesta positiva:
+
                     {
                         "msg": "Datos del los libros por categoria obtenidos con éxito",
                         "book": [
@@ -61,6 +62,7 @@ Respuesta positiva:
                     Status 200.        
 
 Respuesta Negativa:
+
                     {
                         "msg": "El ID (:ID): no existe"
                     }
@@ -74,6 +76,7 @@ Descripción: Elimina una categoría específica según su ID.
 Ejemplo de uso: DELETE /api/categories/:ID
 
 Respuesta positiva: 
+
                     {
                         "msg": "Se elimino correctamente (:ID)"
                     }
@@ -81,6 +84,7 @@ Respuesta positiva:
                     Status 200.
 
 Respuesta negativa: 
+
                     {
                         "msg": "La categoría (:ID) especificada no existe"
                     }
@@ -96,12 +100,14 @@ Descripción: Permite agregar una nueva categoría a la biblioteca.
 Ejemplo de uso: POST /api/categories
 
  JSON para poder 
-agregar categoria:  
+agregar categoria: 
+
                     {
                         "categorie": "(Nombre_Categoria)" (VARCHAR)
                     }
 
-Respuesta positiva: 
+Respuesta positiva:
+
                     {
                         "msg": "La categoría fue agregada con éxito.",
                         "Categoria": "(Nombre_Categoria)" 
@@ -110,6 +116,7 @@ Respuesta positiva:
                     Status 201.
 
 respuesta negativa: 
+
                     {
                         "msg": "Campo incompleto"
                     } 
@@ -125,11 +132,13 @@ Ejemplo de uso: PUT /api/categories/:ID(id_categoria)
 
 JSON para poder 
 editar categoria:  
+
                     {
                         "categorie": "(Nombre_Categoria)" (VARCHAR)
                     }
 
 Respuesta positiva: 
+
                     {
                         "msg": "La categoría fue modificada con éxito.",
                         "Categoria": {
@@ -140,7 +149,8 @@ Respuesta positiva:
 
                     Status 201.
 
-Respuestas negativas: 
+Respuestas negativas:
+
                     {
                         "msg": "La categoría (:ID) especificada no existe"
                     }
@@ -166,6 +176,7 @@ Descripción: Permite ordenar las categorías existente de manera asendente o de
 Ejemplo de uso: GET /api/categoriesOrder/order(ASC/DESC)
 
 Respuesta positiva: 
+
                     {
                         "msg": "Datos de las categorías obtenidos ordenadas con éxito",
                         "Categoria": {
@@ -177,6 +188,7 @@ Respuesta positiva:
                     Status 200.
 
 Respuestas negativas:
+
                     {
                         "msg": "Error en el parámetro de orden"
                     }
@@ -190,6 +202,7 @@ Descripción: Permite ordenar los libros de manera asendente o desendente segun 
 Ejemplo de uso: GET /api/categorieOrderById/1(id_categoria)/order(ASC/DESC)
 
 Respuesta positiva:
+
                     {
                         "msg": "Datos de las categorías obtenidos ordenadas con éxito",
                         "Categorias": [
@@ -205,6 +218,7 @@ Respuesta positiva:
                     Status 200.        
 
 Respuestas negativas:
+
                     {
                         "msg": "La categoría (:ID) especificada no existe"
                     }
@@ -224,6 +238,7 @@ Descripción: Permite filtrar todas las categorias que empiecen segun una letra 
 Ejemplo de uso: GET /tpe-web2/api/categoriesFilter/letter(letra por la cual se quiere filtrar)
                     
 Respuesta positiva:
+
                     {
                         "msg": "Datos de las categorías filtradas obtenidas con éxito",
                         "Categorias": [
@@ -236,6 +251,7 @@ Respuesta positiva:
                     Status 200.        
 
 Respuestas negativas:
+
                     {
                         "msg": "No se encontro resultado."
                     }
@@ -249,6 +265,7 @@ Descripción: Permite paginar por 3 categorias por pagina.
 Ejemplo de uso: GET /tpe-web2/api/categorie/page(Numero de la pagina, 1-2-3-...)
                     
 Respuesta positiva:
+
                     {
                         "msg": "Datos de las categorías obtenidos con éxito",
                         "categories": [
@@ -266,9 +283,11 @@ Respuesta positiva:
                             }
                         ]
                     } 
+                    
                     Status 200.
 
 Respuestas negativas:
+
                     {
                         "msg": "Error al obtener las categorías o la página solicitada no tiene resultados"
                     }
