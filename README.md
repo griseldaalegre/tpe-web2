@@ -21,9 +21,13 @@ Pasword: user
 # Aclaracion: Los siguientes endpoints fueron probados desde Postman.
 
 OBTENER todas las categorías.
+
 Método: GET
+
 URL: /api/categories
+
 Descripción: Este endpoint devuelve todas las categorías de libros disponibles en la biblioteca.
+
 Ejemplo de uso: GET /api/categories
 
 Respuesta positiva:
