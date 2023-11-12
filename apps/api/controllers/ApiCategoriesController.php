@@ -34,13 +34,29 @@ class ApiCategoriesController extends ApiController{
             }
         }
     }
+
+    public function getCategoriesPag($params = [])
+    { 
+        $page = isset($params[':page']) ? $params[':page'] : 1;
+        $perPage = 3; // Número deseado de categorías por página
+
+        $categories = $this->model->getCategoriesPaginated($page, $perPage);
+
+        if (!empty($categories)) {
+            // Obtener todas las categorías paginadas
+            $this->view->response(['msg' => 'Datos de las categorías obtenidos con éxito', 'categories' => $categories], 200);
+        } else {
+            // Si no hay categorías, responder con un error
+            $this->view->response(['msg' => 'Error al obtener las categorías o la página solicitada no tiene resultados'], 404);
+        }
+    }
     
     public function getOrderedCategories($params = []) {
         // Verifica que el valor de $order sea válido (ASC o DESC)
         $order = $params[':order'];
 
         if ($order !== 'ASC' && $order !== 'DESC') {
-            $this->view->response(['msg' => 'Error en el parámetro de orden'], 400);
+            $this->view->response(['msg' => 'Error en el parámetro de orden'], 404);
             return;
         }
 
@@ -50,9 +66,41 @@ class ApiCategoriesController extends ApiController{
         if ($categories !== false) {
             $this->view->response(['msg' => 'Datos de las categorías obtenidos ordenadas con éxito', 'Categorias' => $categories], 200);
         } else {
-            $this->view->response(['msg' => 'Error al obtener las categorías'], 400);
+            $this->view->response(['msg' => 'Error al obtener las categorías'], 404);
         }
     }
+
+    public function getOrderedCategoriesById($params = []) {
+
+        $order = $params[':order'];
+
+        if ($order !== 'ASC' && $order !== 'DESC') {
+            $this->view->response(['msg' => 'Error en el parámetro de orden'], 400);
+            return;
+        }
+    
+        // Verifica que el ID de la categoría esté presente
+        if (!isset($params[':ID'])) {
+            $this->view->response(['msg' => 'Error, ID de categoría no presente en la solicitud'], 400);
+            return;
+        }
+        $id = $params[':ID']; 
+
+        if (!$this->model->categoriaExiste($id)) {
+            $this->view->response(['msg' => 'La categoría ' . $id .  ' especificada no existe'], 404);
+            return;
+        } else {
+            $booksModel = new BooksModel();
+            $book = $booksModel->getBookOrderedByIdCategories($id, $order);
+    
+            if ($book !== false) {
+                $this->view->response(['msg' => 'Datos de las categorías obtenidos ordenadas con éxito', 'Categorias' => $book], 200);
+            } else {
+                $this->view->response(['msg' => 'Error al obtener las categorías'], 400);
+            }
+        }
+    }
+
     public function getFilterCategories($params = [])
     {
         $filtro = $params[':letter'];
@@ -64,7 +112,7 @@ class ApiCategoriesController extends ApiController{
         $categoriasFiltrada = $this->model->getCategoriesFilter($filtro);
 
         if (!empty($categoriasFiltrada)) {
-            $this->view->response(['msg' => 'Datos de las categorías obtenidos ordenadas con éxito', 'Categorias' => $categoriasFiltrada], 200);
+            $this->view->response(['msg' => 'Datos de las categorías filtradas obtenidas con éxito', 'Categorias' => $categoriasFiltrada], 200);
         } else {
             $this->view->response(['msg' => 'No se encontro resultado.'], 404);
         }
@@ -117,7 +165,7 @@ class ApiCategoriesController extends ApiController{
                 $body = $this->getData();
                 $newCategoria= $body->categorie;
                 $this->model->modifyCategorie($newCategoria, $id);
-                $this->view->response(['msg' => 'La categoría fue modificada con éxito.', 'Categoria' => $categorie], 200);
+                $this->view->response(['msg' => 'La categoría fue modificada con éxito.', 'Categoria' => $categorie], 201);
             } else {
                 $this->view->response(['msg' => "El ID ".$id.": no existe"], 404);
                 return;

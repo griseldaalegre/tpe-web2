@@ -19,6 +19,15 @@ class BooksModel extends Model
         return $categorie2;
     }
 
+    public function getBookOrderedByIdCategories($id, $order) {
+
+        $query = $this->db->prepare("SELECT * FROM libros WHERE id_categoria = ? ORDER BY id_libro $order");
+        $query->execute([$id]);
+
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+    
+    
     function deleteBook($idBook)
     {
 
