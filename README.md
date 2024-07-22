@@ -1,24 +1,45 @@
-# tpe-web2
+### Descripción del Proyecto
 
-Trabajo realizado en grupo para la cursada de WEB2 (Carrera TUDAI). Integrantes: Garcia Alejo, Alegre Griselda Alegre.
+Trabajo realizado en grupo para la cursada de WEB2 (Carrera TUDAI).
 
-Email: alegregriselda5@gmail.com - agarcia@alumnos.exa.unicen.edu.ar Temática del TPE Biblioteca
+**Integrantes:**
+- Garcia Alejo
+- Alegre Griselda Alegre
 
-Breve descripción de la temática Biblioteca donde se almacenan libros y se registran usuarios para el prestamo de los mismos.
+**Emails:**
+- alegregriselda5@gmail.com
+- agarcia@alumnos.exa.unicen.edu.ar
 
-Usuarios para loguearse:
+**Temática del TPE:** Biblioteca
 
-Administrador.
-Usuario: webadmin
-Password: admin
+**Breve descripción de la temática:**
+Biblioteca donde se almacenan libros y se registran usuarios para el préstamo de los mismos. En el proyecto se implementaron tres tipos de usuarios:
+- **Administrador:** Puede realizar Altas, Bajas y Modificaciones (ABM) de libros y categorías.
+- **Usuario Normal:** Solo puede acceder a la lista de libros disponibles.
+- **Usuario Público:** No necesita loguearse y no tiene acceso a la lista de libros disponibles.
 
-Usuario Normal.
-Usuario: webuser
-Pasword: user
+**Usuarios para loguearse:**
+- **Administrador:** Usuario: `webadmin`, Password: `admin`
+- **Usuario Normal:** Usuario: `webuser`, Password: `user`
 
+**Funcionalidades implementadas:**
+- **Administrar Categorías:**
+  - Lista de Categorías
+  - Agregar Categorías
+  - Eliminar Categorías
+  - Editar Categorías
 
-# Endpoints
-# Aclaracion: Los siguientes endpoints fueron probados desde Postman.
+- **Base de datos:**
+  - El sistema accede a la base de datos a partir de las constantes definidas en un `config.php`. Si la base no existe, se crea y se llena con datos iniciales automáticamente.
+
+**Requerimientos Técnicos (no funcionales) implementados:**
+- Todos los HTML se muestran utilizando plantillas (`phtml`).
+- Todas las acciones realizadas en la página están manejadas utilizando el patrón MVC.
+- Las URL son semánticas.
+- El sitio incluye el archivo SQL para instalar la base de datos.
+
+**Endpoints:**
+- Aclaración: Los siguientes endpoints fueron probados desde Postman.
 
 OBTENER todas las categorías.
 
